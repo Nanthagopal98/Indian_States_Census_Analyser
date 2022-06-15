@@ -23,6 +23,7 @@ namespace Census_Analyser
                     Console.WriteLine(item.State+"\n"+item.Population+"\n"+item.AreaInSqKm+"\n"+item.DensityPerSqKm);
                     Console.WriteLine("=======================");
                 }     
+                Console.WriteLine(count);
                 return count;
             }
         }
