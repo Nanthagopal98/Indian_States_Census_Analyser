@@ -111,5 +111,18 @@ namespace Census_Test
                 Assert.AreEqual("Check Delimiter", e.Message);
             }
         }
+        [Test]
+        public void Given_Incorrect_Header_StateCodeFile_When_Compare_Then_Throw_Exception()
+        {
+            string path = @"D:\Bridgelabz\.Net\Indian_States_Census_Analyser\Census_Analyser\Files\StateCode - Header.csv";
+            try
+            {
+                analyser.StateCodeAnalyser(path);
+            }
+            catch (CustomExceptioncs e)
+            {
+                Assert.AreEqual("Check Header", e.Message);
+            }
+        }
     }
 }

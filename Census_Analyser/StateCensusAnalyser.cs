@@ -95,7 +95,11 @@ namespace Census_Analyser
             {
                 Console.WriteLine("Check Delimiter");
                 throw new CustomExceptioncs(CustomExceptioncs.ExceptionType.INCORRECT_DELIMITER, "Check Delimiter");
-
+            }
+            catch (CsvHelper.HeaderValidationException)
+            {
+                Console.WriteLine("Check Header");
+                throw new CustomExceptioncs(CustomExceptioncs.ExceptionType.INCORRECT_HEADER, "Check Header");
             }
         }
     }
