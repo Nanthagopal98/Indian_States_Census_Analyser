@@ -51,5 +51,19 @@ namespace Census_Test
                 Assert.AreEqual("Check Delimiter", e.Message);
             }
         }
+        [Test]
+        public void Given_Incorrect_Header_File_When_Compare_Then_Throw_Exception()
+        {
+            string path = @"D:\Bridgelabz\.Net\Indian_States_Census_Analyser\Census_Analyser\Files\HeaderIssue.csv";
+            try
+            {
+                analyser.CensusAdapter(path);
+
+            }
+            catch (CustomExceptioncs e)
+            {
+                Assert.AreEqual("Check Header", e.Message);
+            }
+        }
     }
 }
