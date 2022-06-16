@@ -72,5 +72,18 @@ namespace Census_Test
             string path = @"D:\Bridgelabz\.Net\Indian_States_Census_Analyser\Census_Analyser\Files\StateCode.csv";
             Assert.AreEqual(37, analyser.StateCodeAnalyser(path));
         }
+        [Test]
+        public void Given_Incorrect_StateCode_File_When_Compare_Then_Throw_Exception()
+        {
+            string path = @"D:\Bridgelabz\.Net\Indian_States_Census_Analyser\Census_Analyser\Files\State.csv";
+            try
+            {
+                analyser.StateCodeAnalyser(path);
+            }
+            catch (CustomExceptioncs e)
+            {
+                Assert.AreEqual("Check File Name", e.Message);
+            }
+        }
     }
 }
