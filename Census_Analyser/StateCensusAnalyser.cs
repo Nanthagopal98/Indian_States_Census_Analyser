@@ -12,19 +12,27 @@ namespace Census_Analyser
     {
         public int Analyser(string path)
         {
-            int count;
-            using (StreamReader reader = new StreamReader(path))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            try
             {
-                var items = csv.GetRecords<CensusModel>().ToList();
-                count = items.Count();
-                foreach (var item in items)
+                int count;
+                using (StreamReader reader = new StreamReader(path))
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
-                    Console.WriteLine(item.State + "\n" + item.Population + "\n" + item.AreaInSqKm + "\n" + item.DensityPerSqKm);
-                    Console.WriteLine("=======================");
+                    var items = csv.GetRecords<CensusModel>().ToList();
+                    count = items.Count();
+                    foreach (var item in items)
+                    {
+                        Console.WriteLine(item.State + "\n" + item.Population + "\n" + item.AreaInSqKm + "\n" + item.DensityPerSqKm);
+                        Console.WriteLine("=======================");
+                    }
+                    Console.WriteLine(count);
+                    return count;
                 }
-                Console.WriteLine(count);
-                return count;
+            }
+            catch (CsvHelper.MissingFieldException)
+            {
+                Console.WriteLine("Check Delimiter");
+                throw new CustomExceptioncs(CustomExceptioncs.ExceptionType.INCORRECT_DELIMITER, "Check Delimiter");
             }
         }
         public void CensusAdapter(string path)
