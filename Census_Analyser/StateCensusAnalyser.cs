@@ -61,9 +61,9 @@ namespace Census_Analyser
         //UC-2
         public int StateCodeAnalyser(string path)
         {
-            try 
+            try
             {
-                if(path.Contains(".csv"))
+                if (path.Contains(".csv"))
                 {
                     int count;
                     using (StreamReader reader = new StreamReader(path))
@@ -90,7 +90,13 @@ namespace Census_Analyser
             {
                 Console.WriteLine("Check File Name");
                 throw new CustomExceptioncs(CustomExceptioncs.ExceptionType.FILE_NOT_FOUND, "Check File Name");
-            }          
+            }
+            catch (CsvHelper.MissingFieldException)
+            {
+                Console.WriteLine("Check Delimiter");
+                throw new CustomExceptioncs(CustomExceptioncs.ExceptionType.INCORRECT_DELIMITER, "Check Delimiter");
+
+            }
         }
     }
 }

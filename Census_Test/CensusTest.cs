@@ -98,5 +98,18 @@ namespace Census_Test
                 Assert.AreEqual("Check File Type", e.Message);
             }
         }
+        [Test]
+        public void Given_Incorrect_Delimiter_File_When_Compare_Then_Throw_Exception()
+        {
+            string path = @"D:\Bridgelabz\.Net\Indian_States_Census_Analyser\Census_Analyser\Files\StateCode - Delimeter.csv";
+            try
+            {
+                analyser.StateCodeAnalyser(path);
+            }
+            catch (CustomExceptioncs e)
+            {
+                Assert.AreEqual("Check Delimiter", e.Message);
+            }
+        }
     }
 }
