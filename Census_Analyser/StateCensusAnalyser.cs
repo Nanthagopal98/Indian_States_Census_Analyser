@@ -28,12 +28,17 @@ namespace Census_Analyser
             }
         }
         public void CensusAdapter(string path)
-        {           
+        {
+            if (!path.Contains(".csv"))
+            {
+                Console.WriteLine("Check File type");
+                throw new CustomExceptioncs(CustomExceptioncs.ExceptionType.INCORRECT_FILE_TYPE, "Check File Type");
+            }
             if (!File.Exists(path))
             {
                 Console.WriteLine("Check File Path or Name");
                 throw new CustomExceptioncs(CustomExceptioncs.ExceptionType.FILE_NOT_FOUND, "Check File Path or Name");
-            }                            
+            }           
             else
             {
                 Analyser(path);

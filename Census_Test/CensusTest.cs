@@ -24,5 +24,18 @@ namespace Census_Test
                 Assert.AreEqual("Check File Path or Name", e.Message);
             }
         }
+        [Test]
+        public void Given_Incorrect_FileType_When_Compare_Then_Throw_Exception()
+        {
+            string path = @"D:\Bridgelabz\.Net\Indian_States_Census_Analyser\Census_Analyser\Files\StateCensusData.txt";
+            try
+            {
+                analyser.CensusAdapter(path);
+            }
+            catch (CustomExceptioncs e)
+            {
+                Assert.AreEqual("Check File Type", e.Message);
+            }
+        }
     }
 }
