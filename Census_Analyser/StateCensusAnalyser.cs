@@ -40,6 +40,7 @@ namespace Census_Analyser
                 throw new CustomExceptioncs(CustomExceptioncs.ExceptionType.INCORRECT_HEADER, "Check Header");
             }
         }
+        //For Testcase 1.2 & 1.3
         public void CensusAdapter(string path)
         {
             if (!path.Contains(".csv"))
@@ -57,6 +58,7 @@ namespace Census_Analyser
                 Analyser(path);
             }
         }
+        //UC-2
         public int StateCodeAnalyser(string path)
         {
             int count;

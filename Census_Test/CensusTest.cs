@@ -65,5 +65,12 @@ namespace Census_Test
                 Assert.AreEqual("Check Header", e.Message);
             }
         }
+        //State Code Tests
+        [Test]
+        public void Given_StateCode_TotalCount_When_Compare_Then_return_Positive_Result()
+        {
+            string path = @"D:\Bridgelabz\.Net\Indian_States_Census_Analyser\Census_Analyser\Files\StateCode.csv";
+            Assert.AreEqual(37, analyser.StateCodeAnalyser(path));
+        }
     }
 }
