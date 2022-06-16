@@ -63,6 +63,7 @@ namespace Census_Analyser
         {
             try 
             {
+                if(path.Contains(".csv"))
                 {
                     int count;
                     using (StreamReader reader = new StreamReader(path))
@@ -78,7 +79,12 @@ namespace Census_Analyser
                         Console.WriteLine(count);
                         return count;
                     }
-                }                
+                }
+                else
+                {
+                    Console.WriteLine("Check File type");
+                    throw new CustomExceptioncs(CustomExceptioncs.ExceptionType.INCORRECT_FILE_TYPE, "Check File Type");
+                }
             }
             catch (FileNotFoundException)
             {

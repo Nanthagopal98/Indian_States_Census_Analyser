@@ -85,5 +85,18 @@ namespace Census_Test
                 Assert.AreEqual("Check File Name", e.Message);
             }
         }
+        [Test]
+        public void Given_Incorrect_StateCode_FileType_When_Compare_Then_Throw_Exception()
+        {
+            string path = @"D:\Bridgelabz\.Net\Indian_States_Census_Analyser\Census_Analyser\Files\StateCode.txt";
+            try
+            {
+                analyser.StateCodeAnalyser(path);
+            }
+            catch (CustomExceptioncs e)
+            {
+                Assert.AreEqual("Check File Type", e.Message);
+            }
+        }
     }
 }
