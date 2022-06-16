@@ -11,5 +11,18 @@ namespace Census_Test
             string path = @"D:\Bridgelabz\.Net\Indian_States_Census_Analyser\Census_Analyser\Files\StateCensusData.csv";
             Assert.AreEqual(29, analyser.Analyser(path));
         }
+        [Test]
+        public void Given_Incorrect_File_When_Compare_Then_Throw_Exception()
+        {
+            string path = @"D:\Bridgelabz\.Net\Indian_States_Census_Analyser\Census_Analyser\Files\Code.csv";
+            try
+            {
+                analyser.CensusAdapter(path);
+            }
+            catch (CustomExceptioncs e)
+            {
+                Assert.AreEqual("Check File Path or Name", e.Message);
+            }
+        }
     }
 }
