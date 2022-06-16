@@ -51,10 +51,27 @@ namespace Census_Analyser
             {
                 Console.WriteLine("Check File Path or Name");
                 throw new CustomExceptioncs(CustomExceptioncs.ExceptionType.FILE_NOT_FOUND, "Check File Path or Name");
-            }           
+            }
             else
             {
                 Analyser(path);
+            }
+        }
+        public int StateCodeAnalyser(string path)
+        {
+            int count;
+            using (StreamReader reader = new StreamReader(path))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var items = csv.GetRecords<StateCodeModel>().ToList();
+                count = items.Count();
+                foreach (var item in items)
+                {
+                    Console.WriteLine(item.SrNo + "\n" + item.State + "\n" + item.TIN + "\n" + item.StateCode);
+                    Console.WriteLine("=======================");
+                }
+                Console.WriteLine(count);
+                return count;
             }
         }
     }
